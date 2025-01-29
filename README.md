@@ -75,7 +75,7 @@ Step-by-step instructions to set up the project locally.
 
 ```bash
 # Clone the repository
-https://github.com/Programming-Hero-Web-Course4/b10a12-server-side-rejaul48.git
+https://github.com/rejaul48/TeamFlow-server-side.git
 
 # Navigate to the project directory
 cd your_repository
