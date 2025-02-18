@@ -151,7 +151,7 @@ async function run() {
             }
         });
 
-        app.get('/all-tasks', verifyWithToken, verifyRole(['HR']), async (req, res) => {
+        app.get('/all-tasks', verifyWithToken, verifyRole(['HR', 'admin', 'EMPLOYEE']), async (req, res) => {
             try {
                 const cursor = allTaskCollection.find();
                 const tasks = await cursor.toArray();
@@ -218,7 +218,7 @@ async function run() {
         });
 
 
-        app.get('/verified-employees', verifyWithToken, verifyRole(['admin']), async (req, res) => {
+        app.get('/verified-employees', verifyWithToken, verifyRole(['admin','HR', 'EMPLOYEE']), async (req, res) => {
             try {
                 const verifiedEmployees = await peopleCollection.find({ verified: true }).toArray();
                 res.send(verifiedEmployees);
@@ -228,7 +228,7 @@ async function run() {
         });
 
         // payroll colleciton data get only for admin
-        app.get('/payroll-employee', verifyWithToken, verifyRole(['admin']),async (req, res) => {
+        app.get('/payroll-employee', verifyWithToken, verifyRole(['admin','HR', 'EMPLOYEE']),async (req, res) => {
             try {
                 const payRollEmployee = await payrollCollection.find().toArray()
                 res.send(payRollEmployee)
